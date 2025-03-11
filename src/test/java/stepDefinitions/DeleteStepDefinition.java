@@ -12,12 +12,6 @@ import static tasks.ConsumeDeleteService.makeDeleteRequest;
 import static tasks.ConsumePostService.makePostRequest;
 
 public class DeleteStepDefinition extends SetService{
-    @And("agregó una mascota con los datos: id {string}, nombre {string} y estado {string}")
-    public void agregoUnaMascotaConLosDatosIdNombreYEstado(String id, String name, String status) {
-        actor.attemptsTo(
-                makePostRequest().withData(Integer.parseInt(id), name, status)
-        );
-    }
 
     @When("envía una solicitud DELETE al recurso {string} con el id {string}")
     public void enviaUnaSolicitudDELETEAlRecursoConElId(String endpoint, String id) {
