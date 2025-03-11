@@ -4,12 +4,14 @@ import interactions.DeleteRequest;
 import io.restassured.RestAssured;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import net.thucydides.core.steps.ScenarioSteps;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class ConsumeDeleteService implements Task {
+public class ConsumeDeleteService extends ScenarioSteps implements Task {
 
     private String endpoint;
     private String id;
@@ -20,6 +22,7 @@ public class ConsumeDeleteService implements Task {
         return this;
     }
 
+    @Step("Hacer método DELETE")
     @Override
     public <T extends Actor> void performAs(T actor) {
         RestAssured.config = RestAssuredConfig.config()
