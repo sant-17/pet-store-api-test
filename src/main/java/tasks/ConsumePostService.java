@@ -3,12 +3,14 @@ package tasks;
 import dto.PetDto;
 import interactions.PostRequest;
 import io.restassured.http.ContentType;
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import net.thucydides.core.steps.ScenarioSteps;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class ConsumePostService implements Task {
+public class ConsumePostService extends ScenarioSteps implements Task {
 
     private Integer id;
     private String name;
@@ -21,6 +23,7 @@ public class ConsumePostService implements Task {
         return this;
     }
 
+    @Step("Hacer método POST")
     @Override
     public <T extends Actor> void performAs(T actor) {
         PetDto pet = new PetDto(id, name, status);
