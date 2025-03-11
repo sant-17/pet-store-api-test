@@ -7,13 +7,13 @@ import net.serenitybdd.screenplay.Question;
 
 import java.util.Objects;
 
-public class ValidateBodyData implements Question<Boolean> {
+public class ValidatePostBodyData implements Question<Boolean> {
 
     protected String id;
     protected String name;
     protected String status;
 
-    public ValidateBodyData(String id, String name, String status) {
+    public ValidatePostBodyData(String id, String name, String status) {
         this.id = id;
         this.name = name;
         this.status = status;
@@ -30,7 +30,7 @@ public class ValidateBodyData implements Question<Boolean> {
         return Objects.equals(responseId, id) && Objects.equals(responseName, name) && Objects.equals(responseStatus, status);
     }
 
-    public static ValidateBodyData matches(String id, String name, String status) {
-        return new ValidateBodyData(id, name, status);
+    public static ValidatePostBodyData matches(String id, String name, String status) {
+        return new ValidatePostBodyData(id, name, status);
     }
 }
