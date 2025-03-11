@@ -2,29 +2,29 @@ package tasks;
 
 import interactions.GetRequest;
 import io.restassured.http.ContentType;
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.rest.interactions.Get;
+import net.thucydides.core.steps.ScenarioSteps;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class ConsumeGetService implements Task {
+public class ConsumeGetService extends ScenarioSteps implements Task  {
 
-    private String resource;
+    private Integer petId;
 
-    public ConsumeGetService withResource(String resource) {
-        this.resource = resource;
+    public ConsumeGetService withId(Integer petId) {
+        this.petId = petId;
         return this;
     }
 
+    @Step("Hacer método GET por ID")
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                GetRequest.resource(resource)
-                        .with(
-                                requestSpecification -> requestSpecification
-                                        .contentType(ContentType.JSON)
-                                        .relaxedHTTPSValidation()
-                        )
+                GetRequest.resource("/{id}")
+                        .with(request -> request.pathParam("id", petId))
         );
     }
 

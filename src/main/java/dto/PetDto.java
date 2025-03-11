@@ -11,6 +11,10 @@ public class PetDto {
         this.status = status;
     }
 
+    public PetDto() {
+
+    }
+
     public Integer getId() {
         return id;
     }
