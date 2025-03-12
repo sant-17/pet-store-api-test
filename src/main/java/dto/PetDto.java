@@ -38,4 +38,11 @@ public class PetDto {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return String.format("\n{" +
+                "\n    id = %d,\n    name = '%s',\n    status = '%s'\n}", id, name, status);
+    }
+
 }

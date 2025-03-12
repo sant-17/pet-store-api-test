@@ -1,23 +1,23 @@
 package tasks;
 
 import interactions.DeleteRequest;
-import io.restassured.RestAssured;
-import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class ConsumeDeleteService extends ScenarioSteps implements Task {
 
-    private String endpoint;
     private String id;
 
-    public ConsumeDeleteService withEndpointAndId(String endpoint, String id) {
-        this.endpoint = endpoint;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConsumeDeleteService.class);
+
+    public ConsumeDeleteService withEndpointAndId(String id) {
         this.id = id;
         return this;
     }
@@ -25,13 +25,14 @@ public class ConsumeDeleteService extends ScenarioSteps implements Task {
     @Step("Hacer método DELETE")
     @Override
     public <T extends Actor> void performAs(T actor) {
-        RestAssured.config = RestAssuredConfig.config()
-                        .redirect(
-                                RestAssured.config().getRedirectConfig().followRedirects(true)
-                        );
+        LOGGER.info(
+                "{} está enviando la petición DELETE con el ID {}",
+                actor.getName(),
+                id
+        );
 
         actor.attemptsTo(
-                DeleteRequest.withEndpointAndId(endpoint, id)
+                DeleteRequest.withEndpointAndId("/" + id)
                         .with(
                                 requestSpecification -> requestSpecification
                                         .contentType(ContentType.JSON)

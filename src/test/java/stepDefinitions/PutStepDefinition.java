@@ -1,7 +1,8 @@
 package stepDefinitions;
 
-import dto.PetDtoPut;
+import dto.PetPutDto;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import questions.ValidatePutBodyData;
 import tasks.ConsumePutService;
@@ -13,7 +14,7 @@ public class PutStepDefinition extends SetService{
 
     @When("el usuario actualiza el campo {string} de la mascota {int} al valor {string}")
     public void elUsuarioActualizaElCampoDeLaMascotaIdAlValor(String updated_field, Integer id, String new_value) {
-        PetDtoPut pet = new PetDtoPut();
+        PetPutDto pet = new PetPutDto();
         pet.setId(id);
 
         switch (updated_field.toLowerCase()) {
@@ -36,9 +37,9 @@ public class PutStepDefinition extends SetService{
         actor.attemptsTo(ConsumePutService.withPet(pet));
     }
 
-    @And("la mascota debe reflejar los datos actualizados correctamente")
+    @Then("la mascota debe reflejar los datos actualizados correctamente")
     public void laMascotaDebeReflejarLosDatosActualizadosCorrectamente() {
-        PetDtoPut expectedPet = actor.recall("expectedPet");
+        PetPutDto expectedPet = actor.recall("expectedPet");
 
         actor.should(
                 seeThat(

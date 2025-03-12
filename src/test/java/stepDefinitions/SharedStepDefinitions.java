@@ -22,13 +22,12 @@ public class SharedStepDefinitions extends SetService {
         setup(BASE_URL);
     }
 
-    @And("agregó una mascota con los datos: id {string}, nombre {string} y estado {string}")
+    @Given("agregó una mascota con los datos: id {string}, nombre {string} y estado {string}")
     public void agregoUnaMascotaConLosDatosIdNombreYEstado(String id, String name, String status) {
         actor.attemptsTo(
                 makePostRequest().withData(Integer.parseInt(id), name, status)
         );
     }
-
 
     @Then("valida el estado de dicha petición")
     public void validaElEstadoDeDichaPeticionOK() {

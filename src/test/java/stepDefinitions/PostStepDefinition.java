@@ -1,10 +1,7 @@
 package stepDefinitions;
 
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import questions.ValidatePostBodyData;
 
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static tasks.ConsumePostService.makePostRequest;
 
 public class PostStepDefinition extends SetService{

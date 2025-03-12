@@ -7,30 +7,27 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.rest.abilities.CallAnApi.as;
 
 public class DeleteRequest extends RestInteraction {
-    private final String endpoint;
     private final String id;
 
-    public DeleteRequest(String endpoint, String id) {
-        this.endpoint = endpoint;
+    public DeleteRequest(String id) {
         this.id = id;
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        String resource = endpoint + id;
         rest()
                 .log()
                 .all()
                 .delete(
                         as(actor)
-                                .resolve(resource)
+                                .resolve(id)
                 )
                 .then()
                 .log()
                 .all();
     }
 
-    public static DeleteRequest withEndpointAndId(String endpoint, String id) {
-        return instrumented(DeleteRequest.class, endpoint, id);
+    public static DeleteRequest withEndpointAndId(String id) {
+        return instrumented(DeleteRequest.class, id);
     }
 }

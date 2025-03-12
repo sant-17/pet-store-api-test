@@ -2,7 +2,7 @@ package dto;
 
 import java.util.List;
 
-public class PetDtoPut {
+public class PetPutDto {
     private Integer id;
     private Category category;
     private String name;
@@ -10,7 +10,7 @@ public class PetDtoPut {
     private List<Tag> tags;
     private String status;
 
-    public PetDtoPut() {
+    public PetPutDto() {
     }
 
     // Getters y setters
@@ -56,7 +56,6 @@ public class PetDtoPut {
         this.status = status;
     }
 
-    // Clases internas o externas
     public static class Category {
         private Integer id;
         private String name;
