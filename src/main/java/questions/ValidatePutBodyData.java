@@ -1,6 +1,5 @@
 package questions;
 
-import dto.PetDtoTest;
 import io.restassured.path.json.JsonPath;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;

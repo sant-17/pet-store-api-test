@@ -2,7 +2,7 @@ package dto;
 
 import java.util.List;
 
-public class PetDtoTest {
+public class PetDtoPut {
     private Integer id;
     private Category category;
     private String name;
@@ -10,7 +10,7 @@ public class PetDtoTest {
     private List<Tag> tags;
     private String status;
 
-    public PetDtoTest() {
+    public PetDtoPut() {
     }
 
     // Getters y setters
