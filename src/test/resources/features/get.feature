@@ -10,3 +10,4 @@ Feature:  Consumo de la PetStoreApi con el método GET
     Examples:
       | id  | name     | status    |
       | 268 | Max      | available |
+      | 300 | Maxus    | available |
