@@ -1,6 +1,6 @@
 package tasks;
 
-import dto.PetDtoTest;
+import dto.PetDtoPut;
 import interactions.PutRequest;
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
@@ -11,9 +11,9 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class ConsumePutService implements Task {
 
-    private final PetDtoTest petDtoTest;
+    private final PetDtoPut petDtoTest;
 
-    public ConsumePutService(PetDtoTest petDtoTest) {
+    public ConsumePutService(PetDtoPut petDtoTest) {
         this.petDtoTest = petDtoTest;
     }
 
@@ -25,7 +25,7 @@ public class ConsumePutService implements Task {
         );
     }
 
-    public static ConsumePutService withPet(PetDtoTest petDtoTest) {
+    public static ConsumePutService withPet(PetDtoPut petDtoTest) {
         return instrumented(ConsumePutService.class, petDtoTest);
     }
 }

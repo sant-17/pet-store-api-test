@@ -1,13 +1,10 @@
 package stepDefinitions;
 
-import dto.PetDto;
-import dto.PetDtoTest;
+import dto.PetDtoPut;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import questions.ValidatePutBodyData;
 import tasks.ConsumePutService;
-
-import java.util.List;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
@@ -16,7 +13,7 @@ public class PutStepDefinition extends SetService{
 
     @When("el usuario actualiza el campo {string} de la mascota {int} al valor {string}")
     public void elUsuarioActualizaElCampoDeLaMascotaIdAlValor(String updated_field, Integer id, String new_value) {
-        PetDtoTest pet = new PetDtoTest();
+        PetDtoPut pet = new PetDtoPut();
         pet.setId(id);
 
         switch (updated_field.toLowerCase()) {
@@ -41,7 +38,7 @@ public class PutStepDefinition extends SetService{
 
     @And("la mascota debe reflejar los datos actualizados correctamente")
     public void laMascotaDebeReflejarLosDatosActualizadosCorrectamente() {
-        PetDtoTest expectedPet = actor.recall("expectedPet");
+        PetDtoPut expectedPet = actor.recall("expectedPet");
 
         actor.should(
                 seeThat(
